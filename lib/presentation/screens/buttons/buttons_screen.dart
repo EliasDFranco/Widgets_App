@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ButtonScreen extends StatelessWidget {
-  static const String name = 'home_screen';
+  static const String name = 'buttons_screens';
   const ButtonScreen({super.key});
 
   @override
@@ -58,6 +58,7 @@ class _ButtonsView extends StatelessWidget {
                 label: const Text('Text Button  Icon')),
 
             // TODO: custom button
+            const CustomButtons(),
 
             IconButton(
                 onPressed: () {},
@@ -71,6 +72,33 @@ class _ButtonsView extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButtons extends StatelessWidget {
+  const CustomButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Material(
+        color: colors.primary,
+        child: InkWell(
+          onTap: () {},
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text(
+              'Hola Icono',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ),
         ),
       ),
     );
