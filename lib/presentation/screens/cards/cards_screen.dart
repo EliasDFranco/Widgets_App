@@ -24,6 +24,8 @@ class CardsScreen extends StatelessWidget {
           child: Column(
             children: [
               ...cards.map((card) => _CardTypeOne(
+                  label: card['label'], elevation: card['elevation'])),
+              ...cards.map((card) => _CardTypeTwo(
                   label: card['label'], elevation: card['elevation']))
             ],
           ),
@@ -59,5 +61,41 @@ class _CardTypeOne extends StatelessWidget {
         ),
       ),
     ); // Card es un widget de Flutter
+  }
+}
+
+class _CardTypeTwo extends StatelessWidget {
+  final String label;
+  final double elevation;
+  const _CardTypeTwo({super.key, required this.label, required this.elevation});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+          side: BorderSide(
+            color: colors.outline,
+          )),
+      elevation: elevation,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+        child: Column(
+          children: [
+            Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  icon: const Icon(Icons.countertops),
+                  onPressed: () {},
+                )),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(label),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
