@@ -63,6 +63,33 @@ class _ControllerProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return StreamBuilder(
+        stream: Stream.periodic(const Duration(milliseconds: 200), (value) {
+          return (value * 2) / 100;
+        }).takeWhile((value) => value < 100),
+        builder: ((context, snapshot) {
+          final progrresValue = snapshot.data ?? 0;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const CircularProgressIndicator(
+                  value: 0.5,
+                  strokeWidth: 2,
+                  backgroundColor: Colors.black12,
+                ),
+                const SizedBox(
+                  height: 20,
+                  width: 30,
+                ),
+                Expanded(child: LinearProgressIndicator(value: progrresValue)),
+                const SizedBox(
+                  height: 10,
+                )
+              ],
+            ),
+          );
+        }));
   }
 }
