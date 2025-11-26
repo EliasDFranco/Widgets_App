@@ -40,5 +40,9 @@ final app_router = GoRouter(initialLocation: '/', routes: [
   GoRoute(
       path: '/snackbars',
       name: SnackBarScreen.name,
-      builder: (context, state) => const SnackBarScreen())
+      builder: (context, state) => const SnackBarScreen()),
+  GoRoute(
+      path: '/filtered',
+      name: ImageFilteredScreen.name,
+      builder: (context, state) => const ImageFilteredScreen())
 ]);
