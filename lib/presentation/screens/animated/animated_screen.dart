@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
 
 class AnimatedScreen extends StatelessWidget {
-  static const name = 'animeted_screen';
+  static const name = 'animeted';
   const AnimatedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Animated Container'),
+      ),
+      body: Center(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOutCubic,
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.amber,
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.play_arrow_rounded),
+      ),
+    );
   }
 }
