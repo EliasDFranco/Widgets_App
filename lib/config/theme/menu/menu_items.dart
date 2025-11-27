@@ -39,5 +39,10 @@ const appMenuItems = <MenuItem>[
       title: 'Imagenes con acciones',
       subTitle: 'Desvanecimiento y rotaciones',
       link: '/filtered',
-      icon: Icons.image_rounded)
+      icon: Icons.image_rounded),
+  MenuItem(
+      title: 'Animated Container',
+      subTitle: 'Stateful Widget con animated container',
+      link: '/animeted',
+      icon: Icons.check_box_outline_blank)
 ];
