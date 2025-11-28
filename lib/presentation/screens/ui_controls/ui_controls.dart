@@ -38,6 +38,8 @@ class _UiControlsView extends StatefulWidget {
 class _UiControlsViewState extends State<_UiControlsView> {
   bool isDeveloper = true;
   Transportation selectedTrasportation = Transportation.car;
+  bool wantsBreakFast = false;
+  bool wantsLunch = false;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,28 @@ class _UiControlsViewState extends State<_UiControlsView> {
                       selectedTrasportation = Transportation.submarine;
                     }))
           ],
-        )
+        ),
+        // TODO: aca termina el ExpansionTile
+        ExpansionTile(
+          title: const Text('Que quiere comer:'),
+          children: [
+            CheckboxListTile(
+              title: const Text('Want Lunch'),
+              subtitle: const Text('You really want the lunch??'),
+              value: wantsLunch,
+              onChanged: (value) => setState(() {
+                wantsLunch = !wantsLunch;
+              }),
+            ),
+            CheckboxListTile(
+                title: const Text('Want Breakfast'),
+                subtitle: const Text('You really want the breakfast???'),
+                value: wantsBreakFast,
+                onChanged: (value) => setState(() {
+                      wantsBreakFast = !wantsBreakFast;
+                    })),
+          ],
+        ),
       ],
     );
   }
