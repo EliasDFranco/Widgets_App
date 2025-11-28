@@ -43,6 +43,6 @@ const appMenuItems = <MenuItem>[
   MenuItem(
       title: 'Animated Container',
       subTitle: 'Stateful Widget con animated container',
-      link: '/animeted',
-      icon: Icons.check_box_outline_blank)
+      link: '/animated',
+      icon: Icons.check_box_outline_blank),
 ];
