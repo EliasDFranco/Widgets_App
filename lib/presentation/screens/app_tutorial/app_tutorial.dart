@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 final slides = <SlideInfo>[
   SlideInfo('Seleccionando la comida', 'Cual elegire',
@@ -23,14 +24,26 @@ class AppTutorialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-        physics: const BouncingScrollPhysics(),
-        children: slides
-            .map((slideData) => _Slide(
-                title: slideData.title,
-                caption: slideData.caption,
-                imageUrl: slideData.imageUrl))
-            .toList());
+    return Stack(
+      children: [
+        PageView(
+            physics: const BouncingScrollPhysics(),
+            children: slides
+                .map((slideData) => _Slide(
+                    title: slideData.title,
+                    caption: slideData.caption,
+                    imageUrl: slideData.imageUrl))
+                .toList()),
+        Positioned(
+          top: 20,
+          right: 50,
+          child: TextButton(
+            child: const Text('Salir'),
+            onPressed: () => context.pop(),
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -43,6 +56,40 @@ class _Slide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final titleStyle = Theme.of(context).textTheme.titleLarge;
+    final captionStyle = Theme.of(context).textTheme.titleLarge;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image(
+              image: AssetImage(imageUrl),
+            ),
+            const SizedBox(height: 20),
+            Image(
+              image: AssetImage(imageUrl),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              title,
+              style: titleStyle,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              caption,
+              style: captionStyle,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
