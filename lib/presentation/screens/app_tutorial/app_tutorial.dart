@@ -55,37 +55,41 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(children: [
-        PageView(
-            physics: const BouncingScrollPhysics(),
-            children: slides
-                .map((slideData) => _Slide(
-                    title: slideData.title,
-                    caption: slideData.caption,
-                    imageUrl: slideData.imageUrl))
-                .toList()),
-        Positioned(
-          top: 30,
-          right: 30,
-          child: TextButton(
-            child: const Text('Salir'),
-            onPressed: () => context.pop(),
+      body: Stack(
+        children: [
+          PageView(
+              physics: const BouncingScrollPhysics(),
+              controller:
+                  pageviewController, // Acá le asigno al PageView mi controlador para que funcione!
+              children: slides
+                  .map((slideData) => _Slide(
+                      title: slideData.title,
+                      caption: slideData.caption,
+                      imageUrl: slideData.imageUrl))
+                  .toList()),
+          Positioned(
+            top: 30,
+            right: 30,
+            child: TextButton(
+              child: const Text('Salir'),
+              onPressed: () => context.pop(),
+            ),
           ),
-        ),
-        endReached
-            ? Positioned(
-                bottom: 30,
-                right: 30,
-                child: FadeInRight(
-                  from: 15,
-                  delay: const Duration(seconds: 1),
-                  child: ElevatedButton(
-                    onPressed: () => context.pop(),
-                    child: const Text('Comenzar'),
-                  ),
-                ))
-            : const SizedBox(),
-      ]),
+          endReached
+              ? Positioned(
+                  bottom: 30,
+                  right: 30,
+                  child: FadeInRight(
+                    from: 15,
+                    delay: const Duration(seconds: 1),
+                    child: ElevatedButton(
+                      onPressed: () => context.pop(),
+                      child: const Text('Comenzar'),
+                    ),
+                  ))
+              : const SizedBox(),
+        ],
+      ),
     );
   }
 }
@@ -123,7 +127,7 @@ class _Slide extends StatelessWidget {
             Text(
               caption,
               style: captionStyle,
-            )
+            ),
           ],
         ),
       ),
