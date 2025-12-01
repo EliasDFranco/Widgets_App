@@ -18,10 +18,15 @@ class SlideInfo {
   SlideInfo(this.title, this.caption, this.imageUrl);
 }
 
-class AppTutorialScreen extends StatelessWidget {
+class AppTutorialScreen extends StatefulWidget {
   static const name = 'app_tutorial';
   const AppTutorialScreen({super.key});
 
+  @override
+  State<AppTutorialScreen> createState() => _AppTutorialScreenState();
+}
+
+class _AppTutorialScreenState extends State<AppTutorialScreen> {
   @override
   Widget build(BuildContext context) {
     return Stack(
