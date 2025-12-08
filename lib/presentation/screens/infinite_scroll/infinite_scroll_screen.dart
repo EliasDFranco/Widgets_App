@@ -41,9 +41,17 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     await Future.delayed(const Duration(seconds: 1));
     lastNumbersImagesID();
     isLoading = false;
-    // TODO: Revisar si está montado el componente - widget
     if (!isMounted) return;
     setState(() {});
+    moveScrollBottom();
+  }
+
+  void moveScrollBottom() {
+    if (scrollController.position.pixels + 100 <=
+        scrollController.position.maxScrollExtent) return;
+    scrollController.animateTo(scrollController.position.pixels + 150,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.fastOutSlowIn);
   }
 
   void lastNumbersImagesID() {
