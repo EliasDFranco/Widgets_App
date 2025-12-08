@@ -52,6 +52,12 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         .map((e) => lastID + e));
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(
+      const Duration(seconds: 2),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,30 +69,37 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         context: context,
         removeTop: true,
         removeBottom: true,
-        child: ListView.builder(
-          controller: scrollController,
-          itemCount: imagesID.length,
-          itemBuilder: (context, index) {
-            return FadeInImage(
-                width: double.infinity,
-                height: 300,
-                fit: BoxFit.cover,
-                placeholder: const AssetImage("assets/images/jar-loading.gif"),
-                image: NetworkImage(
-                    'https://picsum.photos/id/${imagesID[index]}/500/300'));
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await Future.delayed(const Duration(seconds: 3));
           },
+          child: ListView.builder(
+            controller: scrollController,
+            itemCount: imagesID.length,
+            itemBuilder: (context, index) {
+              return FadeInImage(
+                  width: double.infinity,
+                  height: 300,
+                  fit: BoxFit.cover,
+                  placeholder:
+                      const AssetImage("assets/images/jar-loading.gif"),
+                  image: NetworkImage(
+                      'https://picsum.photos/id/${imagesID[index]}/500/300'));
+            },
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => context.pop(),
-          child: isLoading
-              ? FadeIn(
-                  child: SpinPerfect(
-                      infinite: true, child: const CircularProgressIndicator()),
-                )
-              : FadeIn(
-                  child: const Icon(Icons.arrow_back_ios_new_outlined),
-                )),
+        onPressed: () => context.pop(),
+        child: isLoading
+            ? FadeIn(
+                child: SpinPerfect(
+                    infinite: true, child: const CircularProgressIndicator()),
+              )
+            : FadeIn(
+                child: const Icon(Icons.arrow_back_ios_new_outlined),
+              ),
+      ),
     );
   }
 }
