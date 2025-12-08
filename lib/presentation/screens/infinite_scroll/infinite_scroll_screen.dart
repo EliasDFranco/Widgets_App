@@ -53,9 +53,21 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
   }
 
   Future<void> onRefresh() async {
+    isLoading = true;
+    setState(() {});
     await Future.delayed(
       const Duration(seconds: 2),
     );
+
+    if (!isMounted) return;
+    isLoading = false;
+
+    final lastID = imagesID.last;
+    imagesID.clear();
+    imagesID.add(lastID + 1);
+    lastNumbersImagesID();
+
+    setState(() {});
   }
 
   @override
@@ -70,9 +82,9 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         removeTop: true,
         removeBottom: true,
         child: RefreshIndicator(
-          onRefresh: () async {
-            await Future.delayed(const Duration(seconds: 3));
-          },
+          onRefresh: onRefresh,
+          edgeOffset: 10,
+          strokeWidth: 2,
           child: ListView.builder(
             controller: scrollController,
             itemCount: imagesID.length,
