@@ -2,6 +2,8 @@ import 'package:flutter/material.dart' hide MenuItem;
 import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/theme/menu/menu_items.dart';
 
+import '../../widgets/side_menu.dart';
+
 class HomeScreen extends StatelessWidget {
   static const String name = 'home_screen';
   const HomeScreen({super.key});
@@ -14,6 +16,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: false,
       ),
       body: const _HomeView(),
+      drawer: const SideMenu(),
     );
   }
 }
