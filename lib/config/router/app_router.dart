@@ -2,6 +2,13 @@ import 'package:go_router/go_router.dart';
 import 'package:widgets_app/presentation/screens/screens.dart';
 
 final app_router = GoRouter(initialLocation: '/', routes: [
+
+  GoRoute(
+    path: '/counter-river',
+    name: CounterScreenRiverpod.name,
+    builder: (context, state) => const CounterScreeenRiverpod(),
+  ),
+  
   GoRoute(
     path: '/',
     name: HomeScreen.name,

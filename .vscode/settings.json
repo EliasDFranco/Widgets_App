@@ -1,5 +1,10 @@
 {
     "editor.defaultFormatter": "Dart-Code.dart-code",
     "editor.formatOnSave": false,
-    "dart.enableSdkFormatter": false
+    "editor.formatOnType": true,
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.tabCompletion": "on",
+    "editor.wordBasedSuggestions": false,
+    "dart.enableSdkFormatter": true,
 }
