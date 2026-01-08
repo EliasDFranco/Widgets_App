@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:widgets_app/config/theme/menu/menu_items.dart';
+import 'package:go_router/go_router.dart';
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
 
@@ -9,8 +10,11 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  final  GlobalKey<ScaffoldKey> scaffoldKey;
   int navDrawerIndex = 0;
   int selectedIndex = 0;
+
+  const SideMenu({super.key, this.scaffoldKey});
   @override
   Widget build(BuildContext context) {
     /* Obs: Aquí tendría que usar el widget NavigationDrawer, sin embargo mi versión de Flutter es bastante vieja para la fecha 11/12/2025. 
@@ -33,6 +37,10 @@ con más capacidad para poder usar la vs de Flutter actual a la fecha en la que 
             icon: const Icon(Icons.house),
             label: const Text("Home Screen"),
           ),
+          final menuItems = appMenuItems;
+          context.push(menuItem.link);
+          widget.scaffoldKey.currentState!.closeDrawer();
+
         ),
         Padding(
           padding: EdgeInsets.only(left: 10, right: 150),
@@ -47,7 +55,7 @@ con más capacidad para poder usar la vs de Flutter actual a la fecha en la que 
           padding:  EdgeInsets.fromLTRB(28, hasNotch ? 10 : 20, 26, 10),
           child: Text("Main"),
         ),
-        ...appMenuItems.sublist(0, 3).map(
+        ...appMenuItems.sublist(0, 8).map(
               (item) => Column(
                 children:[
                   ListTile(
