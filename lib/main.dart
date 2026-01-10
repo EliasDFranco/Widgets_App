@@ -4,9 +4,8 @@ import 'package:widgets_app/config/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() => runApp(
-  ProviderScope(
-    child: const MyApp());
-  )
+      const ProviderScope(child: MyApp()),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Widgets',
       routerConfig: app_router,
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectedColor: 1).getTheme(),n
+      theme: AppTheme(selectedColor: 1).getTheme(),
     );
   }
 }

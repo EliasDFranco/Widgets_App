@@ -10,3 +10,5 @@ export 'package:widgets_app/presentation/screens/buttons/buttons_screen.dart';
 export 'package:widgets_app/presentation/screens/cards/cards_screen.dart';
 export 'package:widgets_app/presentation/screens/home/home_screen.dart';
 export 'package:widgets_app/presentation/screens/image_filtered/image_filtered_screen.dart';
+export 'package:widgets_app/presentation/screens/counter_riverpod/counter_riverpod.dart';
+export 'package:widgets_app/presentation/screens/theme_changer/theme_changer_screen.dart';
