@@ -2,13 +2,6 @@ import 'package:go_router/go_router.dart';
 import 'package:widgets_app/presentation/screens/screens.dart';
 
 final app_router = GoRouter(initialLocation: '/', routes: [
-
-  GoRoute(
-    path: '/counter-river',
-    name: CounterScreenRiverpod.name,
-    builder: (context, state) => const CounterScreeenRiverpod(),
-  ),
-  
   GoRoute(
     path: '/',
     name: HomeScreen.name,
@@ -51,5 +44,14 @@ final app_router = GoRouter(initialLocation: '/', routes: [
   GoRoute(
       path: '/filtered',
       name: ImageFilteredScreen.name,
-      builder: (context, state) => const ImageFilteredScreen())
+      builder: (context, state) => const ImageFilteredScreen()),
+  GoRoute(
+    path: '/counter-river',
+    name: CounterScreenRiverpod.name,
+    builder: (context, state) => const CounterScreenRiverpod(),
+  ),
+  GoRoute(
+      path: '/theme-changer',
+      name: ThemeChangerScreen.name,
+      builder: (context, state) => const ThemeChangerScreen()),
 ]);
