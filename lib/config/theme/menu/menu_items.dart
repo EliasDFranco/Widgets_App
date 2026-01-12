@@ -71,7 +71,7 @@ const appMenuItems = <MenuItem>[
   MenuItem(
     title: 'Cambiar tema',
     subTitle: 'Cambiar el tema de la aplicación',
-    link: '/theme-charger',
+    link: '/theme-changer',
     icon: Icons.color_lens_outlined,
   ),
 ];
