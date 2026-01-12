@@ -17,9 +17,9 @@ const appMenuItems = <MenuItem>[
 
   MenuItem(
     title: "Counter Screen (Riverpod Introduction)",
-    subtile: "First experience in riverpod",
+    subTitle: "First experience in riverpod",
     link: "/counter-river",
-    icon: Icons.numbers
+    icon: Icons.numbers,
   ),
   
   MenuItem(
@@ -67,5 +67,11 @@ const appMenuItems = <MenuItem>[
       title: 'InfiniteScroll y Pull',
       subTitle: 'Listas infinitas y pull to refresh',
       link: '/scroll',
-      icon: Icons.list_alt_outlined)
+      icon: Icons.list_alt_outlined),
+  MenuItem(
+    title: 'Cambiar tema',
+    subTitle: 'Cambiar el tema de la aplicación',
+    link: '/theme-charger',
+    icon: Icons.color_lens_outlined,
+  ),
 ];
