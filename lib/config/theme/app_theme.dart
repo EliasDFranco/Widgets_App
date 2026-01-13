@@ -28,4 +28,14 @@ class AppTheme {
       appBarTheme: const AppBarTheme(
         centerTitle: false,
       ));
+
+  // Nuevo método para usar el toggleDarkMode
+  AppTheme copyWith({
+    int? selectedColor,
+    bool? isDarkTheme
+  }) =>
+      AppTheme(
+        selectedColor: selectedColor ?? this.selectedColor,
+        isDarkTheme: isDarkTheme ?? this.isDarkTheme,
+      ); //El copyWith sirve para copiar ciertas instancias de una clase
 }
