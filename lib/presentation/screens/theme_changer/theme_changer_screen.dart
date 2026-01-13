@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:widgets_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_app/presentation/providers/theme_provider.dart';
+import 'package:widgets_app/config/theme/app_theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +12,7 @@ class ThemeChangerScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final isDarkTheme = ref.watch(isDarkThemeProvider);
+    final isDarkTheme = ref.watch(themeNotifierProvider).isDarkTheme;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Theme Changer Screen'),
@@ -21,7 +22,7 @@ class ThemeChangerScreen extends ConsumerWidget {
                 ? Icons.dark_mode_outlined
                 : Icons.light_mode_outlined),
             onPressed: () {
-              ref.read(isDarkThemeProvider.notifier).update((state) => !state);
+              ref.read(themeNotifierProvider.notifier).toggleDarkMode();
             },
           ),
         ],
